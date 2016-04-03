@@ -6,7 +6,7 @@ source ExampleScaleCorrection.sh
 
 In order to modifiy the muon curvature according to its correction and uncertainties on-the-fly in an analysis code:
 
-Include directly the class GeneralizedEndpoint() from  
+Include directly the class GeneralizedEndpoint from  
 
 include/GeneralizedEndpoint.h
 
