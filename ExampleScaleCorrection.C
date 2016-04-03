@@ -1,7 +1,6 @@
-#include "include/GeneralizedEndpointPt.h"
+#include "include/GeneralizedEndpoint.h"
 
-void ExampleScaleCorrection(){
-
+int main () {
   //Example muon.
 
   float MuonPt= 500.; //Input pt in GeV
@@ -12,20 +11,21 @@ void ExampleScaleCorrection(){
 
 
   /// To be applied on simulation only.
+  GeneralizedEndpoint ScaleSystematic;
 
   //Get Nominal Correction.
-  GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, mode);
-  //Get SystematicUp Correction.
-  GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 1);
-  //Get SystematicDown Correction.
-  GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 2);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, mode);
+  // //Get SystematicUp Correction.
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 1);
+  // //Get SystematicDown Correction.
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 2);
+  
 
-
-  //For test.
-  // GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, 220., mode);
-  // GeneralizedEndpointPt(MuonPt, MuonCharge, 3.5, MuonPhi, mode);
-  // GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, -2);
-  // GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, -1);
-  GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  // //For test.
+  // // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, 220., mode);
+  // // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 3.5, MuonPhi, mode);
+  // // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, -2);
+  // // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, -1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
 
 }

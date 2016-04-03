@@ -1,13 +1,13 @@
 # ExampleScaleHighPt
 
-Example code is ExampleScaleCorrection.C, in order to test the simple example: 
+Example code is ExampleScaleCorrection.C, in order to test the simple example run the script that compiles and executes the example:
 
-root -l ExampleScaleCorrection.C+.
+source ExampleScaleCorrection.sh
 
 In order to modifiy the muon curvature according to its correction and uncertainties on-the-fly in an analysis code:
 
-Include directly the function GeneralizedEndpointPt() defined in 
+Include directly the class GeneralizedEndpoint() from  
 
-include/GeneralizedEndpointPt.h
+include/GeneralizedEndpoint.h
 
-In the analysis code.
+In your analysis code.
