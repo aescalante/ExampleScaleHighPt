@@ -51,15 +51,14 @@ float GeneralizedEndpointPt(float MuonPt, int MuonCharge, float MuonEta, float M
     }
   }
 
-  std::map<int,std::map<int,float>> Correction;
-  std::map<int,std::map<int,float>> CorrectionError;
-
+  std::map<int,std::map<int,float> > Correction;
+  std::map<int,std::map<int,float> > CorrectionError;  
   //Corrections from 2D matrix in MuonPOG presentation in c/TeV.
   //[-2.4, -2.1]
-  Correction[0][0] = -0.401522; CorrectionError[0][0] = 0.142292;
-  Correction[0][1] =  0.800000; CorrectionError[0][1] = 0.266103; 
-  Correction[0][2] =  -0.235869; CorrectionError[0][2] =0.087648;
-  //[-2.1, -0.9]
+  Correction[0][0] = -0.401522; CorrectionError[0][0] = 0.142292; //-180,-60                                                                                                                                                                                                    
+  Correction[0][1] =  0.800000; CorrectionError[0][1] = 0.266103; //-60,60
+  Correction[0][2] =  -0.235869; CorrectionError[0][2] =0.087648; //60,180                                                                                                                                                                                                      
+  //[-2.1, -0.9]                                                                                                                                                                                                                                                                
   Correction[1][0] =  -0.173451; CorrectionError[1][0] = 0.043914;
   Correction[1][1] =  0.066351; CorrectionError[1][1] = 0.065401;
   Correction[1][2] =  -0.151637; CorrectionError[1][2] = 0.076572;
