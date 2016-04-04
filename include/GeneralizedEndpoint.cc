@@ -105,7 +105,7 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   MuonPt = MuonCharge*fabs(MuonPt); //Signed Pt.
   MuonPt = 1/MuonPt; //Convert to Curvature.
   MuonPt = MuonPt + KappaBias; //Apply the bias.
-  if (fabs(MuonPt) < 0.14 && verbose ==1)  printf("WARNING: Very small curvature after correction!(is this expected?) eta = %f, phi = %f \n", kEtaBin, kPhiBin);
+  if (fabs(MuonPt) < 0.14 && verbose ==1)  printf("WARNING: Very small curvature after correction!(is this expected?) eta = %.2f, phi = %.2f \n", MuonEta, MuonPhi);
   if (fabs(MuonPt) < 0.14) MuonPt = KappaBiasError; //To avoid a division by set the curvature to its error if after the correction the pt is larger than 7 TeV.
   MuonPt = 1/MuonPt;//Return to Pt.
   MuonPt = fabs(MuonPt);//returns unsigned Pt, any possible sign flip due to the curvature is absorbed here.
