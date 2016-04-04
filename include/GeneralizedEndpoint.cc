@@ -8,29 +8,29 @@ using std::endl;
 GeneralizedEndpoint::GeneralizedEndpoint(){
   //Corrections from 2D matrix in MuonPOG presentation in c/TeV.
   //[-2.4, -2.1]
-  Correction_[0][0] = -0.401522; CorrectionError_[0][0] = 0.142292; //-180,-60 
-  Correction_[0][1] =  0.800000; CorrectionError_[0][1] = 0.266103; //-60,60
-  Correction_[0][2] =  -0.235869; CorrectionError_[0][2] = 0.087648; //60,180
+  _Correction[0][0] = -0.401522; _CorrectionError[0][0] = 0.142292; //-180,-60 
+  _Correction[0][1] =  0.800000; _CorrectionError[0][1] = 0.266103; //-60,60
+  _Correction[0][2] =  -0.235869; _CorrectionError[0][2] = 0.087648; //60,180
   //[-2.1, -0.9]                                                                                           
-  Correction_[1][0] =  -0.173451; CorrectionError_[1][0] = 0.043914;
-  Correction_[1][1] =  0.066351; CorrectionError_[1][1] = 0.065401;
-  Correction_[1][2] =  -0.151637; CorrectionError_[1][2] = 0.076572;
+  _Correction[1][0] =  -0.173451; _CorrectionError[1][0] = 0.043914;
+  _Correction[1][1] =  0.066351; _CorrectionError[1][1] = 0.065401;
+  _Correction[1][2] =  -0.151637; _CorrectionError[1][2] = 0.076572;
   //[-0.9, 0.]
-  Correction_[2][0] =  0.058729; CorrectionError_[2][0] = 0.059396;
-  Correction_[2][1] =  -0.040742; CorrectionError_[2][1] = 0.053842;
-  Correction_[2][2] =  -0.079811; CorrectionError_[2][2] = 0.057861;
+  _Correction[2][0] =  0.058729; _CorrectionError[2][0] = 0.059396;
+  _Correction[2][1] =  -0.040742; _CorrectionError[2][1] = 0.053842;
+  _Correction[2][2] =  -0.079811; _CorrectionError[2][2] = 0.057861;
   //[-0., 0.9]
-  Correction_[3][0] =  -0.081190; CorrectionError_[3][0] = 0.061906;
-  Correction_[3][1] =  0.169463; CorrectionError_[3][1] = 0.060391;
-  Correction_[3][2] =  -0.007521; CorrectionError_[3][2] = 0.058256;
+  _Correction[3][0] =  -0.081190; _CorrectionError[3][0] = 0.061906;
+  _Correction[3][1] =  0.169463; _CorrectionError[3][1] = 0.060391;
+  _Correction[3][2] =  -0.007521; _CorrectionError[3][2] = 0.058256;
   //[0.9, 2.1]
-  Correction_[4][0] =  0.095130; CorrectionError_[4][0] = 0.071207;
-  Correction_[4][1] =  0.238078; CorrectionError_[4][1] = 0.056428;
-  Correction_[4][2] =  0.028462; CorrectionError_[4][2] = 0.057563;
+  _Correction[4][0] =  0.095130; _CorrectionError[4][0] = 0.071207;
+  _Correction[4][1] =  0.238078; _CorrectionError[4][1] = 0.056428;
+  _Correction[4][2] =  0.028462; _CorrectionError[4][2] = 0.057563;
   //[2.1, 2.4]
-  Correction_[5][0] =  -0.494724; CorrectionError_[5][0] = 0.141278;
-  Correction_[5][1] =  -0.091591; CorrectionError_[5][1] = 0.135156;
-  Correction_[5][2] =  0.183099;  CorrectionError_[5][2] = 0.182376;
+  _Correction[5][0] =  -0.494724; _CorrectionError[5][0] = 0.141278;
+  _Correction[5][1] =  -0.091591; _CorrectionError[5][1] = 0.135156;
+  _Correction[5][2] =  0.183099;  _CorrectionError[5][2] = 0.182376;
 };
 
 GeneralizedEndpoint::~GeneralizedEndpoint()
@@ -87,8 +87,8 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
     }
   }
 
-  float KappaBias=Correction_[kEtaBin][kPhiBin];
-  float KappaBiasError=CorrectionError_[kEtaBin][kPhiBin];
+  float KappaBias=_Correction[kEtaBin][kPhiBin];
+  float KappaBiasError=_CorrectionError[kEtaBin][kPhiBin];
 
   MuonPt = MuonPt/1000.; //GeV to TeV.
   MuonPt = MuonCharge*fabs(MuonPt); //Signed Pt.
