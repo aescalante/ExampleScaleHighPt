@@ -90,9 +90,6 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   float KappaBias=_Correction[kEtaBin][kPhiBin];
   float KappaBiasError=_CorrectionError[kEtaBin][kPhiBin];
 
-  MuonPt = MuonPt/1000.; //GeV to TeV.
-  MuonPt = MuonCharge*fabs(MuonPt); //Signed Pt.
-
   if (Mode==1) KappaBias = KappaBias+KappaBiasError; //Take bias + UpSystematic.
   if (Mode==2) KappaBias = KappaBias-KappaBiasError; //Takes bias - DownSystematic.
 
@@ -104,10 +101,12 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
 
   if (verbose ==1) printf("eta bin %i, phi bin %i Correction %f +- %f pt %f\n", kEtaBin, kPhiBin, KappaBias, KappaBiasError,MuonPt);
 
+  MuonPt = MuonPt/1000.; //GeV to TeV.
+  MuonPt = MuonCharge*fabs(MuonPt); //Signed Pt.
   MuonPt = 1/MuonPt; //Convert to Curvature.
   MuonPt = MuonPt + KappaBias; //Apply the bias.
   MuonPt = 1/MuonPt;//Return to Pt.
-  MuonPt = fabs(MuonPt)*1000.;//Return to Pt.
+  MuonPt = fabs(MuonPt)*1000.;//Return to Pt in GeV.
 
   if (verbose ==1) printf("NEW pt %f\n", MuonPt);
 
