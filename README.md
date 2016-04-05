@@ -1,5 +1,9 @@
 # ExampleScaleHighPt
 
+Firstly get the corrections:
+
+git clone https://github.com/aescalante/ExampleScaleHighPt.git
+
 Example code is ExampleScaleCorrection.C, in order to test the simple example run the script that compiles and executes the example:
 
 source ExampleScaleCorrection.sh
