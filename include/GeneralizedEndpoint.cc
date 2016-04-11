@@ -6,7 +6,7 @@ using std::cerr;
 using std::endl;
 
 GeneralizedEndpoint::GeneralizedEndpoint(){
-  //Corrections from 2D matrix in MuonPOG presentation in c/TeV.
+  //Corrections from 2D matrix in MuonPOG presentation in c/TeV for tracker assignment.
   //[-2.4, -2.1]
   _Correction[0][0] = -0.401522; _CorrectionError[0][0] = 0.142292; //-180,-60 
   _Correction[0][1] =  0.800000; _CorrectionError[0][1] = 0.266103; //-60,60
@@ -60,11 +60,11 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   }
 
   // Eta Binning
-  unsigned int etaBINS = 7;
+  unsigned int etaBINS = 6;
   unsigned int kEtaBin = etaBINS;
   double EtaBin[etaBINS+1];
-  EtaBin[0]=-2.4; EtaBin[1]=-2.1; EtaBin[2]=-0.9; EtaBin[3]=0.;
-  EtaBin[4]=0.9; EtaBin[5]=1.2; EtaBin[6]=2.1; EtaBin[7]=2.4;  
+  EtaBin[0]=-2.4; EtaBin[1]=-2.1; EtaBin[2]=-1.2; EtaBin[3]=0.;
+  EtaBin[4]=1.2; EtaBin[5]=2.1; EtaBin[6]=2.4;  
 
   // Phi Binning.
   unsigned int phiBINS =3;
