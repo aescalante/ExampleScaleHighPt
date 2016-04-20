@@ -31,6 +31,9 @@ GeneralizedEndpoint::GeneralizedEndpoint(){
   _Correction[5][0] =  -0.494724; _CorrectionError[5][0] = 0.141278;
   _Correction[5][1] =  -0.091591; _CorrectionError[5][1] = 0.135156;
   _Correction[5][2] =  0.183099;  _CorrectionError[5][2] = 0.182376;
+
+  // By default not to merge the bins
+  _MergeBins = false;
 };
 
 GeneralizedEndpoint::~GeneralizedEndpoint()
@@ -60,11 +63,11 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   }
 
   // Eta Binning
-  unsigned int etaBINS = 7;
+  unsigned int etaBINS = 6;
   unsigned int kEtaBin = etaBINS;
   double EtaBin[etaBINS+1];
-  EtaBin[0]=-2.4; EtaBin[1]=-2.1; EtaBin[2]=-0.9; EtaBin[3]=0.;
-  EtaBin[4]=0.9; EtaBin[5]=1.2; EtaBin[6]=2.1; EtaBin[7]=2.4;  
+  EtaBin[0]=-2.4; EtaBin[1]=-2.1; EtaBin[2]=-1.2; EtaBin[3]=0.;
+  EtaBin[4]=1.2; EtaBin[5]=2.1; EtaBin[6]=2.4;  
 
   // Phi Binning.
   unsigned int phiBINS =3;
@@ -89,6 +92,14 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
 
   float KappaBias=_Correction[kEtaBin][kPhiBin];
   float KappaBiasError=_CorrectionError[kEtaBin][kPhiBin];
+
+  /// Insert simplifaction and average eta and phi bins.  
+  if (MuonEta < 1.2 && _MergeBins == true){
+    KappaBias = r.Gauss(0, 0.03);
+    KappaBiasError = 0.03;
+    if (KappaBias > 0.03) KappaBias = 0.03;
+    if (KappaBias < -0.03) KappaBias = -0.03;
+  }
 
   if (Mode==1) KappaBias = KappaBias+KappaBiasError; //Take bias + UpSystematic.
   if (Mode==2) KappaBias = KappaBias-KappaBiasError; //Takes bias - DownSystematic.
