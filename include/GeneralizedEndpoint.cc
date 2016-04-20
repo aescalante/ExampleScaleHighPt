@@ -97,9 +97,9 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   if (fabs(MuonEta) < 1.2 && _MergeBins == true){
     KappaBias = _RandomNumbers.Gaus(0, 0.03);
     KappaBiasError = 0.03;
-    if (verbose ==1) printf("Warning merged values are used for this correction, eta %f correction %f\n", MuonEta, KappaBias);
     if (KappaBias > 0.03) KappaBias = 0.03;
     if (KappaBias < -0.03) KappaBias = -0.03;
+    if (verbose ==1) printf("Warning merged values are used for this correction, eta %f correction %f\n", MuonEta, KappaBias);
   }
 
   if (Mode==1) KappaBias = KappaBias+KappaBiasError; //Take bias + UpSystematic.
