@@ -6,7 +6,7 @@ using std::cerr;
 using std::endl;
 
 GeneralizedEndpoint::GeneralizedEndpoint(){
-  //Corrections from 2D matrix in MuonPOG presentation in c/TeV.
+  //Corrections from 2D matrix in MuonPOG presentation in c/TeV for tracker assignment.
   //[-2.4, -2.1]
   _Correction[0][0] = -0.401522; _CorrectionError[0][0] = 0.142292; //-180,-60 
   _Correction[0][1] =  0.800000; _CorrectionError[0][1] = 0.266103; //-60,60
