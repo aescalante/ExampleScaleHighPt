@@ -95,7 +95,7 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
 
   /// Insert simplifaction and average eta and phi bins.  
   if (MuonEta < 1.2 && _MergeBins == true){
-    KappaBias = r.Gauss(0, 0.03);
+    KappaBias = _RandomNumbers.Gauss(0, 0.03);
     KappaBiasError = 0.03;
     if (KappaBias > 0.03) KappaBias = 0.03;
     if (KappaBias < -0.03) KappaBias = -0.03;
