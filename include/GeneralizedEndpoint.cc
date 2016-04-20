@@ -94,9 +94,10 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   float KappaBiasError=_CorrectionError[kEtaBin][kPhiBin];
 
   /// Insert simplifaction and average eta and phi bins.  
-  if (MuonEta < 1.2 && _MergeBins == true){
-    KappaBias = _RandomNumbers.Gauss(0, 0.03);
+  if (fabs(MuonEta) < 1.2 && _MergeBins == true){
+    KappaBias = _RandomNumbers.Gaus(0, 0.03);
     KappaBiasError = 0.03;
+    if (verbose ==1) printf("Warning merged values are used for this correction, eta %f correction %f\n", MuonEta, KappaBias);
     if (KappaBias > 0.03) KappaBias = 0.03;
     if (KappaBias < -0.03) KappaBias = -0.03;
   }

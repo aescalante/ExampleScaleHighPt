@@ -21,6 +21,12 @@ int main () {
   //Get Nominal Correction with verbose =1.
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
 
+  ScaleSystematic.MergeBins(); //if one set this eta <1.2 bins will be merged.
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+
   // //For test.
   // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, 220., mode);
   // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 3.5, MuonPhi, mode);
