@@ -27,6 +27,16 @@ int main () {
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
 
+  //Testing The merging of central eta 
+  ScaleSystematic.MergeBins();
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+
+  //Testing smearing of central values
+  ScaleSystematic.SmearCentralValue();
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 1.3, MuonPhi, 0, 1);
+
+
   // //For test.
   // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, 220., mode);
   // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 3.5, MuonPhi, mode);

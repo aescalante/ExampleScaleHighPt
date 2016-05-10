@@ -34,6 +34,8 @@ GeneralizedEndpoint::GeneralizedEndpoint(){
 
   // By default not to merge the bins
   _MergeBins = false;
+  // By defatult not to smear central values
+  _SmearCentralValue = false;
 };
 
 GeneralizedEndpoint::~GeneralizedEndpoint()
@@ -93,12 +95,19 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   float KappaBias=_Correction[kEtaBin][kPhiBin];
   float KappaBiasError=_CorrectionError[kEtaBin][kPhiBin];
 
+  //Smear correction by the uncertainty. 
+  if (_SmearCentralValue == true) {
+    if (verbose ==1) printf("Before Smearing bias is %f +- %f  \n", KappaBias, KappaBiasError);
+    KappaBias = KappaBias + _RandomNumbers.Gaus(0, KappaBiasError);
+    if (verbose ==1) printf("After Smearing bias is %f\n",  KappaBias);
+  }
+
   /// Insert simplifaction and average eta and phi bins.  
   if (fabs(MuonEta) < 1.2 && _MergeBins == true){
     KappaBias = _RandomNumbers.Gaus(0, 0.03);
     KappaBiasError = 0.03;
-    if (KappaBias > 0.03) KappaBias = 0.03;
-    if (KappaBias < -0.03) KappaBias = -0.03;
+    // if (KappaBias > 0.03) KappaBias = 0.03;
+    // if (KappaBias < -0.03) KappaBias = -0.03;
     if (verbose ==1) printf("Warning merged values are used for this correction, eta %f correction %f\n", MuonEta, KappaBias);
   }
 
