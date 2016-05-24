@@ -21,20 +21,16 @@ int main () {
   //Get Nominal Correction with verbose =1.
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
 
-  ScaleSystematic.MergeBins(); //if one set this eta <1.2 bins will be merged.
-  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
-  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
-  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
-  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
-
   //Testing The merging of central eta 
   ScaleSystematic.MergeBins();
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 1, 1);
+  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 2, 1);
 
   //Testing smearing of central values
   ScaleSystematic.SmearCentralValue();
   ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, MuonEta, MuonPhi, 0, 1);
-  ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 1.3, MuonPhi, 0, 1);
+  // ScaleSystematic.GeneralizedEndpointPt(MuonPt, MuonCharge, 1.3, MuonPhi, 0, 1);
 
 
   // //For test.
