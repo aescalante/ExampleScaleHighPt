@@ -97,9 +97,10 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
 
 
   /// Insert simplifaction and average eta and phi bins.  
-  if (fabs(MuonEta) < 1.2 && _MergeBins == true){
+  if ( _MergeBins == true){
     KappaBias = 0.;
-    KappaBiasError = 0.03;
+    if (fabs(MuonEta) < 1.2 ) KappaBiasError = 0.03;
+    if (fabs(MuonEta) > 1.2 ) KappaBiasError = 0.04;
     // if (KappaBias > 0.03) KappaBias = 0.03;
     // if (KappaBias < -0.03) KappaBias = -0.03;
     if (verbose ==1) printf("Warning merged values are used for this correction, eta %f correction %f\n", MuonEta, KappaBias);
@@ -121,7 +122,7 @@ float GeneralizedEndpoint::GeneralizedEndpointPt(float MuonPt, int MuonCharge, f
   if (Mode==-3) KappaBias = -1*(KappaBias-KappaBiasError); //Reverse the sign to use it with data as first approximation. (this option has some non-trivial assumptions).
   //////
 
-  if (verbose ==1) printf("eta bin %i, phi bin %i Correction %f +- %f pt %f\n", kEtaBin, kPhiBin, KappaBias, KappaBiasError,MuonPt);
+  if (verbose ==1) printf("eta bin %i, phi bin %i Correction %f +- %f pt %f\n", kEtaBin, kPhiBin, KappaBias, KappaBiasError,MuonCharge*MuonPt);
 
   MuonPt = MuonPt/1000.; //GeV to TeV.
   MuonPt = MuonCharge*fabs(MuonPt); //Signed Pt.
